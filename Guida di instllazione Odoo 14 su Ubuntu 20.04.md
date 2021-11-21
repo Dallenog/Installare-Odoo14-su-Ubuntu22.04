@@ -10,7 +10,7 @@
 6. [Installare e configurare Odoo 14](#6-Installare-e-configurare-odoo-14)
 7. [Installare addons necessari per la ficalità italiana](#7-installare-addons-necessari-per-la-ficalità-italiana)
 8. [Creare file di configurazione](#8-creare-file-di-configurazione)
-9. [Creare un file di unità Systemd](#9-creare-un-file-di-unità-Systemd)
+9. [Creare un file di unità Systemd](#9-creare-un-file-di-unità-systemd)
 10. [Test dell'installazione](#10-test-dell'installazione)
 
 
@@ -55,7 +55,7 @@ sudo useradd -m -d /opt/odoo14 -U -r -s /bin/bash odoo14
 
 Puoi impostare il nome dell'utente che vuoi, purché successivamente crei un utente PostgreSQL con lo stesso nome.
 
-##4. Configurare PostgreSQL
+## 4. Configurare PostgreSQL
 
 Odoo utilizza PostgreSQL come back-end del database, è già stato installato nel punto 2, quindi procediamo con la creazione di un utente PostgreSQL con lo stesso nome dell'utente di sistema precedentemente creato, nel nostro caso odoo14:
 
