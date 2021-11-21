@@ -175,7 +175,7 @@ Creare un file di configurazione con il seguente contenuto:
 sudo nano /etc/odoo14.conf
 ```
 
-``ini
+```ini
 [options]
 ; This is the password that allows database operations:
 admin_passwd = my_admin_passwd
@@ -184,7 +184,7 @@ db_port = False
 db_user = odoo14
 db_password = False
 addons_path = /opt/odoo14/odoo/addons,/opt/odoo/addons/l10n-italy,/opt/odoo/addons/account-financial-tools,/opt/odoo/addons/account-financial-reporting,/opt/odoo/addons/server-ux,/opt/odoo/addons/partner-contact
-``
+```
 
 Non dimenticare di cambiare my_admin_passwd in qualcosa di più sicuro.
 
@@ -196,7 +196,7 @@ Apri l'editor di testo e crea un file di unità di servizio chiamato odoo14.serv
 sudo nano /etc/systemd/system/odoo14.service
 ```
 
-``ini
+```ini
 [Unit]
 Description=Odoo14
 Requires=postgresql.service
