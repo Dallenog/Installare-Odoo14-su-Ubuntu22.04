@@ -264,8 +264,8 @@ L'output dovrebbe essere simile al seguente.
 
 ```sh
 enp1s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 192.168.122.16  netmask 255.255.255.0  broadcast 192.168.122.255
-        inet6 fe80::5054:ff:fe01:2eb1  prefixlen 64 ...
+        inet 192.168.152.16  netmask 255.255.255.0  broadcast 192.168.162.255
+        ...
 ```
 
 Il tuo ip è il numero che segue inet
