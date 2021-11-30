@@ -180,7 +180,7 @@ cd /opt/odoo14/odoo/personal_addons
 ```
 
 Colleghiamoci al sito https://apps.odoo.com/apps ,cerchiamo l'addons che ci interessa selezioniamo la versione 14 di Odoo e scarichiamo in locale il file.zip.
-Da un terminale in locale copiamo sul server la cartella
+Scompattiamo il file e copiamo la cartella sul server, da un terminale in locale digitiamo:
 
 Modifichiamo al seguente comando il nome_utente il nome_della_cartella e l'IP "192...." di destinazione
 
