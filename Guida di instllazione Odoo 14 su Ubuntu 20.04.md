@@ -183,7 +183,7 @@ db_host = False
 db_port = False
 db_user = odoo14
 db_password = False
-addons_path = /opt/odoo14/odoo/addons,/opt/odoo/addons/l10n-italy,/opt/odoo/addons/account-financial-tools,/opt/odoo/addons/account-financial-reporting,/opt/odoo/addons/server-ux,/opt/odoo/addons/partner-contact
+addons_path = /opt/odoo14/odoo/addons,/opt/odoo14/addons/l10n-italy,/opt/odoo14/addons/account-financial-tools,/opt/odoo14/addons/account-financial-reporting,/opt/odoo14/addons/server-ux,/opt/odoo14/addons/partner-contact
 ```
 
 Non dimenticare di cambiare my_admin_passwd in qualcosa di più sicuro.
