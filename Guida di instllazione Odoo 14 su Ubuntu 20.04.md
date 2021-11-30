@@ -166,6 +166,27 @@ sudo git clone https://github.com/OCA/server-ux.git -b 14.0 /opt/odoo14/addons/s
 ```sh
 sudo git clone https://github.com/OCA/partner-contact.git -b 14.0 /opt/odoo14/addons/partner-contact
 ```
+Scarichiamo altri addons dal sito di Odoo.
+Creiamo, diamo i permessi di scrittura e ci spostiamo nella cartella di destinazione
+
+```sh
+sudo mkdir /opt/odoo14/odoo/personal_addons
+```
+```sh
+sudo chmod 7 /opt/odoo14/odoo/personal_addons
+```
+```sh
+cd /opt/odoo14/odoo/personal_addons
+```
+
+Colleghiamoci al sito https://apps.odoo.com/apps ,cerchiamo l'addons che ci interessa selezioniamo la versione 14 di Odoo e scarichiamo in locale il file.zip.
+Da un terminale in locale copiamo sul server la cartella
+
+Modifichiamo al seguente comando il nome_utente il nome_della_cartella e l'IP "192...." di destinazione
+
+```sh
+scp -r /home/nome_utente/Scaricati/nome_della_cartella nome_utente@192....:/opt/odoo14/odoo/personal_addons
+```
 
 ## 8. Creare file di configurazione
 
@@ -183,7 +204,7 @@ db_host = False
 db_port = False
 db_user = odoo14
 db_password = False
-addons_path = /opt/odoo14/odoo/addons,/opt/odoo14/addons/l10n-italy,/opt/odoo14/addons/account-financial-tools,/opt/odoo14/addons/account-financial-reporting,/opt/odoo14/addons/server-ux,/opt/odoo14/addons/partner-contact
+addons_path = /opt/odoo14/odoo/addons,/opt/odoo14/odoo/personal_addons,/opt/odoo14/addons/l10n-italy,/opt/odoo14/addons/account-financial-tools,/opt/odoo14/addons/account-financial-reporting,/opt/odoo14/addons/server-ux,/opt/odoo14/addons/partner-contact
 ```
 
 Non dimenticare di cambiare my_admin_passwd in qualcosa di più sicuro.
