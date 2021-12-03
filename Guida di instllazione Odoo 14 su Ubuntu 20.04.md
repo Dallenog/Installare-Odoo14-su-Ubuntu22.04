@@ -8,7 +8,7 @@
 4. [Configurare PostgreSQL](#4-configurare-postgresql)
 5. [Installare Wkhtmltopdf](#5-installare-wkhtmltopdf)
 6. [Installare e configurare Odoo 14](#6-Installare-e-configurare-odoo-14)
-7. [Installare addons necessari per la ficalità italiana](#7-installare-addons-necessari-per-la-ficalità-italiana)
+7. [Installare addons necessari per la fiscalità italiana](#7-installare-addons-necessari-per-la-fiscalità-italiana)
 8. [Creare file di configurazione](#8-creare-file-di-configurazione)
 9. [Creare un file di unità Systemd](#9-creare-un-file-di-unità-systemd)
 10. [Test dell'installazione](#10-test-dell'installazione)
@@ -143,7 +143,7 @@ Torna al tuo utente sudo:
 exit
 ```
 
-## 7. Installare addons necessari per la ficalità italiana
+## 7. Installare addons necessari per la fiscalità italiana
 
 Sacrichiamo gli addons per la versione italiana.
 
