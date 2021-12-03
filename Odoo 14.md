@@ -293,3 +293,4 @@ Il tuo ip è il numero che segue inet
 
 Apri il tuo browser e digita: http://TUO_DOMINIO_O_IP:8069 dovresti visualizzare la pagina di configurazione di Odoo 14.
 
+Guida non ancora terminata
