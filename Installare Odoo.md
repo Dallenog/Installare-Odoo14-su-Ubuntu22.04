@@ -178,23 +178,14 @@ sudo chmod 7 /opt/odoo14/personal_addons
 ```sh
 cd /opt/odoo14/personal_addons
 ```
-Metodo 1
 
-Colleghiamoci al sito https://apps.odoo.com/apps ,cerchiamo l'addons che ci interessa selezioniamo la versione 14 di Odoo e scarichiamo in locale il file.zip.
+Colleghiamoci al sito https://apps.odoo.com/apps oppure https://odoo-community.org/shop/product ,cerchiamo l'addons che ci interessa selezioniamo la versione 14 di Odoo e scarichiamo in locale il file.zip.
 Scompattiamo il file e copiamo la cartella sul server, da un terminale in locale digitiamo:
 
 Modifichiamo al seguente comando il nome_utente il nome_della_cartella e l'IP "192...." di destinazione
 
 ```sh
 scp -r /home/nome_utente/Scaricati/nome_della_cartella nome_utente@192....:/opt/odoo14/odoo/personal_addons
-```
-
-Metodo 2 
-
-Colleghiamoci al sito https://odoo-community.org/shop/product, cerchiamo l'addons che ci interessa clicchiamo su Repository si aprirà Github, copiamo https sotto CODE e incolliamolo al seguente comando sostituendolo a https:... e nome_cartella_di_destinazione :
-
-```sh
-sudo git clone https:... -b 14.0 /opt/odoo14/personal_addons/nome_cartella_di_destinazione
 ```
 
 ## 8. Creare file di configurazione
