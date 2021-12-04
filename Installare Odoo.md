@@ -15,7 +15,7 @@
 
 
 ## 1. Introduzione
-L'installazione di Odoo in ambiente virtuale o la distribuzione come contenitore Docker, consente di avere un maggiore controllo sulla configurazione del sistema ed eseguire più versioni di Odoo sullo stesso sistema.
+L'installazione di Odoo in ambiente virtuale e la distribuzione come contenitore Docker, consente di avere un maggiore controllo sulla configurazione del sistema ed eseguire più versioni di Odoo sullo stesso sistema.
 
 Questa guida, ti guidera attraverso l'installazione e la distribuzione di Odoo 14 all'interno di un ambiente virtuale Python, scaricando Odoo dal repository Github e utilizzando Nginx come proxy inverso.
 
@@ -293,4 +293,4 @@ Il tuo ip è il numero che segue inet
 
 Apri il tuo browser e digita: http://TUO_DOMINIO_O_IP:8069 dovresti visualizzare la pagina di configurazione di Odoo 14.
 
-Guida non ancora terminata
+Continuerà...
