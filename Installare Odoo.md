@@ -4,12 +4,11 @@
 1. [Introduzione](#1-introduzione)
 2. [Preparazione del sistema](#1-preparazione-del-sistema)
 3. [Creare un utente di sistema](#2-Creare-un-utente-di-sistema)
-3. [Install and Configure PostgreSQL](#3-install-and-configure-postgresql)
 4. [Configurare PostgreSQL](#4-configurare-postgresql)
 5. [Installare Wkhtmltopdf](#5-installare-wkhtmltopdf)
 6. [Installare e configurare Odoo 14](#6-Installare-e-configurare-odoo-14)
-7. [Installare addons necessari per la fiscalità italiana](#7-installare-addons-necessari-per-la-fiscalità-italiana)
-8. [Creare file di configurazione](#8-creare-file-di-configurazione)
+7. [Addons necessari per la fiscalità italiana](#7-addons-necessari-per-la-fiscalità-italiana)
+8. [File di log e di configurazione](#8-file-di-log-e-di-configurazione)
 9. [Creare un file di unità Systemd](#9-creare-un-file-di-unità-systemd)
 10. [Test dell'installazione](#10-test-dell'installazione)
 
@@ -188,9 +187,20 @@ Modifichiamo al seguente comando il nome_utente il nome_della_cartella e l'IP "1
 scp -r /home/nome_utente/Scaricati/nome_della_cartella nome_utente@192....:/opt/odoo14/odoo/personal_addons
 ```
 
-## 8. Creare file di configurazione
+## 8. File di log e di configurazione
 
-Creare un file di configurazione con il seguente contenuto:
+Creiamo un file di log
+
+```sh
+sudo touch /var/log/odoo.log
+```
+Impostiamo i permessi per l'utente
+
+``sh
+sudo chown -R odoo14:odoo14 /opt/odoo14/ /var/log/odoo14.log
+```
+
+Creiamo un file di configurazione con il seguente contenuto:
 
 ```sh
 sudo nano /etc/odoo14.conf
@@ -205,6 +215,7 @@ db_port = False
 db_user = odoo14
 db_password = False
 addons_path = /opt/odoo14/odoo/addons,/opt/odoo14/personal_addons,/opt/odoo14/addons/l10n-italy,/opt/odoo14/addons/account-financial-tools,/opt/odoo14/addons/account-financial-reporting,/opt/odoo14/addons/server-ux,/opt/odoo14/addons/partner-contact
+logfile = /var/log/odoo14.log
 ```
 
 Non dimenticare di cambiare my_admin_passwd in qualcosa di più sicuro.
@@ -236,19 +247,19 @@ StandardOutput=journal+console
 WantedBy=multi-user.target
 ```
 
-Notifica a systemd che esiste un nuovo file di unità:
+Notifichimo a systemd che esiste un nuovo file di unità:
 
 ```sh
 sudo systemctl daemon-reload
 ```
 
-Avvia il servizio Odoo e abilitalo per l'avvio all'avvio eseguendo:
+Avviamo il servizio Odoo e abilitalo per l'avvio all'avvio eseguendo:
 
 ```sh
 sudo systemctl enable --now odoo14
 ```
 
-Verifica lo stato del servizio:
+Verifichimo lo stato del servizio:
 
 ```sh
 sudo systemctl status odoo14
