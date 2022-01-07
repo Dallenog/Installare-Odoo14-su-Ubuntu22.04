@@ -169,13 +169,13 @@ Scarichiamo altri addons dal sito di Odoo.
 Creiamo, diamo i permessi di scrittura e ci spostiamo nella cartella di destinazione
 
 ```sh
-sudo mkdir /opt/odoo14/personal_addons
+sudo mkdir /opt/odoo14/addons/personal_addons
 ```
 ```sh
-sudo chmod 7 /opt/odoo14/personal_addons
+sudo chmod 7 /opt/odoo14/addons/personal_addons
 ```
 ```sh
-cd /opt/odoo14/personal_addons
+cd /opt/odoo14/addons/personal_addons
 ```
 
 Colleghiamoci al sito https://apps.odoo.com/apps oppure https://odoo-community.org/shop/product ,cerchiamo l'addons che ci interessa selezioniamo la versione 14 di Odoo e scarichiamo in locale il file.zip.
