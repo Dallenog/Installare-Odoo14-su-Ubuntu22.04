@@ -184,7 +184,7 @@ Scompattiamo il file e copiamo la cartella sul server, da un terminale in locale
 Modifichiamo al seguente comando il nome_utente il nome_della_cartella e l'IP "192...." di destinazione
 
 ```sh
-scp -r /home/nome_utente/Scaricati/nome_della_cartella nome_utente@192....:/opt/odoo14/odoo/personal_addons
+scp -r /home/nome_utente/Scaricati/nome_della_cartella nome_utente@192....:/opt/odoo14/addons/personal_addons
 ```
 
 ## 8. File di log e di configurazione
@@ -196,7 +196,7 @@ sudo touch /var/log/odoo.log
 ```
 Impostiamo i permessi per l'utente
 
-``sh
+```sh
 sudo chown -R odoo14:odoo14 /opt/odoo14/ /var/log/odoo14.log
 ```
 
