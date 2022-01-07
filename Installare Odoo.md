@@ -247,7 +247,7 @@ StandardOutput=journal+console
 WantedBy=multi-user.target
 ```
 
-Notifichimo a systemd che esiste un nuovo file di unità:
+Notifichiamo a systemd che esiste un nuovo file di unità:
 
 ```sh
 sudo systemctl daemon-reload
