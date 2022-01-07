@@ -192,7 +192,7 @@ scp -r /home/nome_utente/Scaricati/nome_della_cartella nome_utente@192....:/opt/
 Creiamo un file di log
 
 ```sh
-sudo touch /var/log/odoo.log
+sudo touch /var/log/odoo14.log
 ```
 Impostiamo i permessi per l'utente
 
