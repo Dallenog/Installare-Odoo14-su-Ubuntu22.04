@@ -39,7 +39,7 @@ sudo apt install git python3-pip build-essential wget python3-dev python3-venv p
 Installa tutte le dipendenze necessarie al funzionamento di Odoo
 
 ```sh
-sudo apt install adduser fonts-inconsolata fonts-font-awesome fonts-roboto-unhinted libjs-underscore lsb-base postgresql-client python3-babel python3-chardet python3-dateutil python3-decorator python3-docutils python3-freezegun python3-html2text python3-pil python3-jinja2 python3-libsass python3-lxml python3-mako python3-num2words python3-ofxparse python3-passlib python3-polib python3-psutil python3-psycopg2 python3-pydot python3-pypdf2 python3-qrcode python3-renderpm python3-reportlab python3-requests python3-stdnum python3-tz python3-vobject python3-werkzeug python3-xlsxwriter python3-xlrd python3-zeep postgresql python3-ldap udo libpq-dev
+sudo apt install adduser fonts-inconsolata fonts-font-awesome fonts-roboto-unhinted libjs-underscore lsb-base postgresql-client python3-html2text python3-pil python3-renderpm python3-tz postgresql udo libpq-dev
 ```
 
 Ps: Questi pacchetti potrebbero cambiare, se vuoi verificare che siano tutti corretti collegati a https://github.com/odoo/odoo/blob/14.0/debian/control e guarda sotto "Depends:" e "Recommends:"
