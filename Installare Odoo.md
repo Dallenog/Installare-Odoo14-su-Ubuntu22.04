@@ -147,7 +147,7 @@ exit
 Sacrichiamo gli addons per la versione italiana.
 
 ```sh
-sudo git clone https://github.com/oca/l10n-italy.git -b 14.0 /opt/odoo14/addons/l10n-italy
+sudo git clone https://github.com/OCA/l10n-italy.git -b 14.0 /opt/odoo14/addons/l10n-italy
 ```
 
 ```sh
