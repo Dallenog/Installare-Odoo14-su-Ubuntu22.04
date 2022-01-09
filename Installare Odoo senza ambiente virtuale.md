@@ -1,5 +1,5 @@
 # Guida di instllazione Odoo 14 su Ubuntu 20.04
-###Contenuti:
+### Contenuti:
 
 1. [Introduzione](#1-introduzione)
 2. [Preparazione del sistema](#1-preparazione-del-sistema)
@@ -12,13 +12,13 @@
 9. [Creare un file di unità Systemd](#9-creare-un-file-di-unità-systemd)
 10. [Test dell'installazione](#10-test-dell'installazione)
 
-##1. Introduzione
+## 1. Introduzione
 
 Questa guida, ti aiuterà all'installazione di Odoo 14, scaricando Odoo dal repository Github e utilizzando Nginx come proxy inverso.
 
 Questa guida è stata testata utilizzando un server virtualizzato accedendo ad esso con ssh.
 
-##2. Preparazione del sistema
+## 2. Preparazione del sistema
 
 Accedi a Ubuntu come utente sudo non root per poter completare correttamente questo tutorial.
 
@@ -36,7 +36,7 @@ sudo apt install adduser fonts-inconsolata fonts-font-awesome fonts-roboto-unhin
 ```
 Ps: Questi pacchetti potrebbero cambiare, se vuoi verificare che siano tutti corretti collegati a https://github.com/odoo/odoo/blob/14.0/debian/control e guarda sotto "Depends:" e "Recommends:"
 
-##3. Creare un utente di sistema
+## 3. Creare un utente di sistema
 
 Crea un utente di sistema che eseguirà Odoo, chiamato odoo14 con home directory /opt/odoo14:
 ```sh
@@ -44,13 +44,13 @@ sudo useradd -m -d /opt/odoo14 -U -r -s /bin/bash odoo14
 ```
 Puoi impostare il nome dell'utente che vuoi, purché successivamente crei un utente PostgreSQL con lo stesso nome.
 
-##4. Configurare PostgreSQL
+## 4. Configurare PostgreSQL
 
 Odoo utilizza PostgreSQL come back-end del database, è già stato installato nel punto 2, quindi procediamo con la creazione di un utente PostgreSQL con lo stesso nome dell'utente di sistema precedentemente creato, nel nostro caso odoo14:
 ```sh
 sudo su - postgres -c "createuser -s odoo14"
 ```
-##5. Installare Wkhtmltopdf
+## 5. Installare Wkhtmltopdf
 
 Wkhtmltox fornisce una serie di strumenti da riga di comando open source in grado di eseguire il rendering HTML in PDF e vari formati di immagine. Per poter stampare report PDF, è necessario installare lo strumento wkhtmltopdf. La versione consigliata per Odoo è 0.12.6, che non è disponibile nei repository Ubuntu 20.04 predefiniti.
 
@@ -62,7 +62,7 @@ Installa il pacchetto digitando:
 ```sh
 sudo apt install ./wkhtmltox_0.12.6-1.bionic_amd64.deb
 ```
-##6. Installare e configurare Odoo 14
+## 6. Installare e configurare Odoo 14
 
 Installeremo Odoo dal sorgente.
 
@@ -92,7 +92,7 @@ Torna al tuo utente sudo:
 exit
 ```
 
-##7. Installare addons necessari per la fiscalità italiana
+## 7. Installare addons necessari per la fiscalità italiana
 
 Sacrichiamo gli addons per la versione italiana.
 ```sh
@@ -115,7 +115,7 @@ Gli addons aggiuntivi li andremo a scaricare nella cartella personal_addons che 
 ```sh
 sudo mkdir /opt/odoo14/addons/personal_addons
 ```
-##8. File di log e di configurazione
+## 8. File di log e di configurazione
 
 Creiamo un file di log
 ```sh
@@ -142,7 +142,7 @@ logfile = /var/log/odoo14.log
 ```
 Non dimenticare di cambiare my_admin_passwd in qualcosa di più sicuro.
 
-##9. Creare un file di unità Systemd
+## 9. Creare un file di unità Systemd
 
 Apri l'editor di testo e crea un file di unità di servizio chiamato odoo14.service con il seguente contenuto:
 ```sh
@@ -193,7 +193,7 @@ Per visualizzare i messaggi registrati dal servizio Odoo, utilizzare il comando 
 ```sh
 sudo journalctl -u odoo14
 ```
-10. Test dell'installazione
+## 10. Test dell'installazione
 
 Se non sai l'indirizzo ip del tuo server digita:
 ```sh
