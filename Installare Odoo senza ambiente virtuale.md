@@ -87,34 +87,34 @@ pip3 install unidecode codicefiscale asn1crypto pyxb==1.2.6 elementpath openupgr
 ```
 Se si riscontra un errore di compilazione, assicurarsi che tutte le dipendenze richieste elencate nel punto "2. Preparazione del sistema" siano installate.
 
+## 7. Installare addons necessari per la fiscalità italiana
+
+Sacrichiamo gli addons per la versione italiana.
+```sh
+git clone https://github.com/OCA/l10n-italy.git -b 14.0 /opt/odoo14/addons/l10n-italy
+```
+```sh
+git clone https://github.com/OCA/account-financial-tools.git -b 14.0 /opt/odoo14/addons/account-financial-tools
+```
+```sh
+git clone https://github.com/OCA/account-financial-reporting.git -b 14.0 /opt/odoo14/addons/account-financial-reporting
+```
+```sh
+git clone https://github.com/OCA/server-ux.git -b 14.0 /opt/odoo14/addons/server-ux
+```
+```sh
+git clone https://github.com/OCA/partner-contact.git -b 14.0 /opt/odoo14/addons/partner-contact
+```
+
+Gli addons aggiuntivi li andremo a scaricare nella cartella personal_addons che per il momento creiamo
+```sh
+mkdir /opt/odoo14/addons/personal_addons
+```
 Torna al tuo utente sudo:
 ```sh
 exit
 ```
 
-## 7. Installare addons necessari per la fiscalità italiana
-
-Sacrichiamo gli addons per la versione italiana.
-```sh
-sudo git clone https://github.com/OCA/l10n-italy.git -b 14.0 /opt/odoo14/addons/l10n-italy
-```
-```sh
-sudo git clone https://github.com/OCA/account-financial-tools.git -b 14.0 /opt/odoo14/addons/account-financial-tools
-```
-```sh
-sudo git clone https://github.com/OCA/account-financial-reporting.git -b 14.0 /opt/odoo14/addons/account-financial-reporting
-```
-```sh
-sudo git clone https://github.com/OCA/server-ux.git -b 14.0 /opt/odoo14/addons/server-ux
-```
-```sh
-sudo git clone https://github.com/OCA/partner-contact.git -b 14.0 /opt/odoo14/addons/partner-contact
-```
-
-Gli addons aggiuntivi li andremo a scaricare nella cartella personal_addons che per il momento creiamo
-```sh
-sudo mkdir /opt/odoo14/addons/personal_addons
-```
 ## 8. File di log e di configurazione
 
 Creiamo un file di log
