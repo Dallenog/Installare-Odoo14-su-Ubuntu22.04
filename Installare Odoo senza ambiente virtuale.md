@@ -110,6 +110,10 @@ Gli addons aggiuntivi li andremo a scaricare nella cartella personal_addons che 
 ```sh
 mkdir /opt/odoo14/addons/personal_addons
 ```
+Per caricare sul server i file scaricati usiamo il seguente comando
+```sh
+scp -r /home/nome_utente/nome_della_cartella nome_utente@192....:/opt/odoo14/addons/personal_addons
+```
 Torna al tuo utente sudo:
 ```sh
 exit
