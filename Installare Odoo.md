@@ -136,12 +136,6 @@ Una volta fatto, disattiva l'ambiente digitando:
 deactivate
 ```
 
-Torna al tuo utente sudo:
-
-```sh
-exit
-```
-
 ## 7. Installare addons necessari per la fiscalità italiana
 
 Sacrichiamo gli addons per la versione italiana.
@@ -165,26 +159,21 @@ sudo git clone https://github.com/OCA/server-ux.git -b 14.0 /opt/odoo14/addons/s
 ```sh
 sudo git clone https://github.com/OCA/partner-contact.git -b 14.0 /opt/odoo14/addons/partner-contact
 ```
-Scarichiamo altri addons dal sito di Odoo.
-Creiamo, diamo i permessi di scrittura e ci spostiamo nella cartella di destinazione
+
+Torna al tuo utente sudo:
 
 ```sh
-sudo mkdir /opt/odoo14/addons/personal_addons
+exit
 ```
+Gli addons aggiuntivi li andremo a scaricare nella cartella personal_addons che per il momento creiamo
+
 ```sh
-sudo chmod 7 /opt/odoo14/addons/personal_addons
+mkdir /opt/odoo14/addons/personal_addons
 ```
-```sh
-cd /opt/odoo14/addons/personal_addons
-```
-
-Colleghiamoci al sito https://apps.odoo.com/apps oppure https://odoo-community.org/shop/product ,cerchiamo l'addons che ci interessa selezioniamo la versione 14 di Odoo e scarichiamo in locale il file.zip.
-Scompattiamo il file e copiamo la cartella sul server, da un terminale in locale digitiamo:
-
-Modifichiamo al seguente comando il nome_utente il nome_della_cartella e l'IP "192...." di destinazione
+Per caricare sul server i file scaricati usiamo il seguente comando
 
 ```sh
-scp -r /home/nome_utente/Scaricati/nome_della_cartella nome_utente@192....:/opt/odoo14/addons/personal_addons
+scp -r /home/nome_utente/nome_della_cartella nome_utente@192....:/opt/odoo14/addons/personal_addons
 ```
 
 ## 8. File di log e di configurazione
