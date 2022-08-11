@@ -7,10 +7,11 @@
 4. [Configurare PostgreSQL](#4-configurare-postgresql)
 5. [Installare Wkhtmltopdf](#5-installare-wkhtmltopdf)
 6. [Installare e configurare Odoo 14](#6-Installare-e-configurare-odoo-14)
-7. [Addons necessari per la fiscalità italiana](#7-addons-necessari-per-la-fiscalità-italiana)
-8. [File di log e di configurazione](#8-file-di-log-e-di-configurazione)
-9. [Creare un file di unità Systemd](#9-creare-un-file-di-unità-systemd)
-10. [Test dell'installazione](#10-test-dell'installazione)
+7. [Aggiornare Odoo 14](#7-aggiornare-Odoo-14)
+8. [Addons necessari per la fiscalità italiana](#8-addons-necessari-per-la-fiscalità-italiana)
+9. [File di log e di configurazione](#9-file-di-log-e-di-configurazione)
+10. [Creare un file di unità Systemd](#10-creare-un-file-di-unità-systemd)
+11. [Test dell'installazione](#11-test-dell'installazione)
 
 ## 1. Introduzione
 
@@ -87,9 +88,33 @@ pip3 install unidecode codicefiscale asn1crypto pyxb==1.2.6 elementpath openupgr
 ```
 Se si riscontra un errore di compilazione, assicurarsi che tutte le dipendenze richieste elencate nel punto "2. Preparazione del sistema" siano installate.
 
-## 7. Installare addons necessari per la fiscalità italiana
+## 7. aggiornare Odoo 14
 
-Sacrichiamo gli addons per la versione italiana.
+Fermiamo il servizio e ci spostiamo nella cartella di installazione
+```sh
+sudo service odoo stop
+```
+```sh
+sudo su - odoo14 && sudo /opt/odoo14/odoo
+```
+Verifichiamo la versinone installata
+
+```sh
+git branch -a
+```
+Aggiorniamo
+
+```sh
+gip pull --all
+```
+Riavviamo il servizio
+```sh
+sudo service odoo stop
+```
+
+## 8. Installare addons necessari per la fiscalità italiana
+
+Scarichiamo gli addons per la versione italiana.
 ```sh
 git clone https://github.com/OCA/l10n-italy.git -b 14.0 /opt/odoo14/addons/l10n-italy
 ```
@@ -105,25 +130,43 @@ git clone https://github.com/OCA/server-ux.git -b 14.0 /opt/odoo14/addons/server
 ```sh
 git clone https://github.com/OCA/partner-contact.git -b 14.0 /opt/odoo14/addons/partner-contact
 ```
-
+Aggiornare la fiscalità italiana
+Fermiamo il servizio e ci spostiamo nella cartella di installazione
+```sh
+sudo service odoo stop
+```
+```sh
+sudo su - odoo14
+```
+```sh
+cd /opt/odoo14/addons/l10n-italy && git pull --all && cd /opt/odoo14/addons/account-financial-tools && git pull --all && cd /opt/odoo14/addons/account-financial-reporting && git pull --all && cd /opt/odoo14/addons/server-ux && git pull --all && cd /opt/odoo14/addons/partner-contact && git pull --all && cd
+```
+Riavviamo il servizio
+```sh
+sudo service odoo stop
+```
 Gli addons aggiuntivi li andremo a scaricare nella cartella personal_addons che per il momento creiamo
 ```sh
 mkdir /opt/odoo14/addons/personal_addons
 ```
 Per caricare sul server i file scaricati usiamo il seguente comando
 ```sh
-scp -r /home/nome_utente/nome_della_cartella nome_utente@192....:/opt/odoo14/addons/personal_addons
+scp -r /home/nome_utente/nome_della_cartella odoo14@192....:/opt/odoo14/addons/personal_addons
 ```
 Torna al tuo utente sudo:
 ```sh
 exit
 ```
 
-## 8. File di log e di configurazione
+## 9. File di log e di configurazione
 
 Creiamo un file di log
 ```sh
 sudo touch /var/log/odoo14.log
+```
+Leggiamo il file di log
+```sh
+less /var/log/odoo14.log
 ```
 Impostiamo i permessi per l'utente
 ```sh
@@ -141,12 +184,18 @@ db_host = False
 db_port = False
 db_user = odoo14
 db_password = False
-addons_path = /opt/odoo14/odoo/addons,/opt/odoo14/addons/personal_addons,/opt/odoo14/addons/l10n-italy,/opt/odoo14/addons/account-financial-tools,/opt/odoo14/addons/account-financial-reporting,/opt/odoo14/addons/server-ux,/opt/odoo14/addons/partner-contact
+addons_path = /opt/odoo14/odoo/addons
+               ,/opt/odoo14/addons/personal_addons
+               ,/opt/odoo14/addons/l10n-italy
+               ,/opt/odoo14/addons/account-financial-tools
+               ,/opt/odoo14/addons/account-financial-reporting
+               ,/opt/odoo14/addons/server-ux
+               ,/opt/odoo14/addons/partner-contact
 logfile = /var/log/odoo14.log
 ```
 Non dimenticare di cambiare my_admin_passwd in qualcosa di più sicuro.
 
-## 9. Creare un file di unità Systemd
+## 10. Creare un file di unità Systemd
 
 Apri l'editor di testo e crea un file di unità di servizio chiamato odoo14.service con il seguente contenuto:
 ```sh
@@ -197,7 +246,7 @@ Per visualizzare i messaggi registrati dal servizio Odoo, utilizzare il comando 
 ```sh
 sudo journalctl -u odoo14
 ```
-## 10. Test dell'installazione
+## 11. Test dell'installazione
 
 Se non sai l'indirizzo ip del tuo server digita:
 ```sh
