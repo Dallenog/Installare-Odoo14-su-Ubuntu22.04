@@ -67,7 +67,7 @@ sudo apt install ./wkhtmltox_0.12.6-1.bionic_amd64.deb
 
 Installeremo Odoo dal sorgente.
 
-Passa all'utente odoo14:
+Passiamo all'utente odoo14:
 ```sh
 sudo su - odoo14
 ```
@@ -98,18 +98,16 @@ sudo service odoo stop
 sudo su - odoo14 && sudo /opt/odoo14/odoo
 ```
 Verifichiamo la versinone installata
-
 ```sh
 git branch -a
 ```
 Aggiorniamo
-
 ```sh
 gip pull --all
 ```
 Riavviamo il servizio
 ```sh
-sudo service odoo stop
+sudo service odoo start
 ```
 
 ## 8. Installare addons necessari per la fiscalità italiana
@@ -131,13 +129,15 @@ git clone https://github.com/OCA/server-ux.git -b 14.0 /opt/odoo14/addons/server
 git clone https://github.com/OCA/partner-contact.git -b 14.0 /opt/odoo14/addons/partner-contact
 ```
 Aggiornare la fiscalità italiana
-Fermiamo il servizio e ci spostiamo nella cartella di installazione
+Fermiamo il servizio
 ```sh
 sudo service odoo stop
 ```
+Passiamo all'utente odoo14:
 ```sh
 sudo su - odoo14
 ```
+Aggiorniamo
 ```sh
 cd /opt/odoo14/addons/l10n-italy && git pull --all && cd /opt/odoo14/addons/account-financial-tools && git pull --all && cd /opt/odoo14/addons/account-financial-reporting && git pull --all && cd /opt/odoo14/addons/server-ux && git pull --all && cd /opt/odoo14/addons/partner-contact && git pull --all && cd
 ```
