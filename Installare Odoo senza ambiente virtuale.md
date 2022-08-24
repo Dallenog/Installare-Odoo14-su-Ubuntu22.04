@@ -110,7 +110,7 @@ git branch -a
 ```
 Aggiorniamo
 ```sh
-gip pull --all
+git pull --all
 ```
 Riavviamo il servizio
 ```sh
