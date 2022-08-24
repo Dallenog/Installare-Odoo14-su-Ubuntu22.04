@@ -86,6 +86,10 @@ pip3 install -r odoo/requirements.txt
 ```sh
 pip3 install unidecode codicefiscale asn1crypto pyxb==1.2.6 elementpath openupgradelib xmlschema python-barcode
 ```
+Usciamo dall'utente odoo14
+```sh
+exit
+```
 Se si riscontra un errore di compilazione, assicurarsi che tutte le dipendenze richieste elencate nel punto "2. Preparazione del sistema" siano installate.
 
 ## 7. aggiornare Odoo 14
