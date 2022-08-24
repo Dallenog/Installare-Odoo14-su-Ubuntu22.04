@@ -99,7 +99,10 @@ Fermiamo il servizio e ci spostiamo nella cartella di installazione
 sudo service odoo stop
 ```
 ```sh
-sudo su - odoo14 && sudo /opt/odoo14/odoo
+sudo su - odoo14
+```
+```sh
+cd /opt/odoo14/odoo
 ```
 Verifichiamo la versinone installata
 ```sh
