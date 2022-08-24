@@ -138,6 +138,7 @@ git clone https://github.com/OCA/partner-contact.git -b 14.0 /opt/odoo14/addons/
 Scarichiamo gli addons per utilizzare il lettore dei codici a barre.
 ```sh
 git clone https://github.com/OCA/stock-logistics-barcode.git -b 14.0 /opt/odoo14/addons/stock-logistics-barcode
+git clone https://github.com/OCA/web.git -b 14.0 /opt/odoo14/addons/web
 ```
 Aggiornare la fiscalità italiana
 Fermiamo il servizio
@@ -202,6 +203,8 @@ addons_path = /opt/odoo14/odoo/addons
                ,/opt/odoo14/addons/account-financial-reporting
                ,/opt/odoo14/addons/server-ux
                ,/opt/odoo14/addons/partner-contact
+               ,/opt/odoo14/addons/stock-logistics-barcode
+               ,/opt/odoo14/addons/web
 logfile = /var/log/odoo14.log
 ```
 Non dimenticare di cambiare my_admin_passwd in qualcosa di più sicuro.
