@@ -110,7 +110,7 @@ Riavviamo il servizio
 sudo service odoo start
 ```
 
-## 8. Installare addons necessari per la fiscalità italiana
+## 8. Installare addons necessari
 
 Scarichiamo gli addons per la versione italiana.
 ```sh
@@ -127,6 +127,10 @@ git clone https://github.com/OCA/server-ux.git -b 14.0 /opt/odoo14/addons/server
 ```
 ```sh
 git clone https://github.com/OCA/partner-contact.git -b 14.0 /opt/odoo14/addons/partner-contact
+```
+Scarichiamo gli addons per utilizzare il lettore dei codici a barre.
+```sh
+git clone https://github.com/OCA/stock-logistics-barcode.git -b 14.0 /opt/odoo14/addons/stock-logistics-barcode
 ```
 Aggiornare la fiscalità italiana
 Fermiamo il servizio
