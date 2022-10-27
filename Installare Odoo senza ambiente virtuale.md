@@ -96,7 +96,7 @@ Se si riscontra un errore di compilazione, assicurarsi che tutte le dipendenze r
 
 Fermiamo il servizio e ci spostiamo nella cartella di installazione
 ```sh
-sudo service odoo stop
+sudo service odoo14 stop
 ```
 ```sh
 sudo su - odoo14
