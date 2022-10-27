@@ -29,14 +29,8 @@ sudo apt update
 ```
 Installa gli strumenti necessari per l'installazione e la configurazione di Odoo
 ```sh
-sudo apt install git python3-pip build-essential wget python3-dev libxslt-dev libzip-dev libldap2-dev libsasl2-dev python3-setuptools node-less net-tools
+sudo apt install adduser fonts-inconsolata fonts-font-awesome fonts-roboto-unhinted libjs-underscore lsb-base postgresql-client postgresql python3-renderpm libpq-dev python3-dev nodejs  git build-essential node-less npm python3-pip python3-wheel python3-setuptools libjpeg-dev libpq-dev liblcms2-dev libwebp-dev libtiff5-dev libjpeg8-dev libopenjp2-7-dev libharfbuzz-dev libfribidi-dev libxcb1-dev libpq-dev libldap2-dev libsasl2-dev libxslt1-dev zlib1g-dev libxml2-dev
 ```
-Installa tutte le dipendenze necessarie al funzionamento di Odoo
-```sh
-sudo apt install adduser fonts-inconsolata fonts-font-awesome fonts-roboto-unhinted libjs-underscore lsb-base postgresql-client python3-html2text python3-pil python3-renderpm python3-tz postgresql udo libpq-dev
-```
-Ps: Questi pacchetti potrebbero cambiare, se vuoi verificare che siano tutti corretti collegati a https://github.com/odoo/odoo/blob/14.0/debian/control e guarda sotto "Depends:" e "Recommends:"
-
 ## 3. Creare un utente di sistema
 
 Crea un utente di sistema che eseguirà Odoo, chiamato odoo14 con home directory /opt/odoo14:
