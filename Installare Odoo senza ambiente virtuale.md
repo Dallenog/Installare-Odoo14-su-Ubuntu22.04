@@ -120,6 +120,10 @@ sudo service odoo start
 ## 8. Installare addons necessari
 
 Scarichiamo gli addons per la versione italiana.
+Passiamo all'utente odoo14:
+```sh
+sudo su - odoo14
+```
 ```sh
 git clone https://github.com/OCA/l10n-italy.git -b 14.0 /opt/odoo14/addons/l10n-italy
 ```
