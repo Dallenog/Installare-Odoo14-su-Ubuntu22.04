@@ -143,7 +143,7 @@ git clone https://github.com/OCA/web.git -b 14.0 /opt/odoo14/addons/web
 Aggiornare la fiscalità italiana
 Fermiamo il servizio
 ```sh
-sudo service odoo stop
+sudo service odoo14 stop
 ```
 Passiamo all'utente odoo14:
 ```sh
@@ -155,7 +155,7 @@ cd /opt/odoo14/addons/l10n-italy && git pull --all && cd /opt/odoo14/addons/acco
 ```
 Riavviamo il servizio
 ```sh
-sudo service odoo stop
+sudo service odoo start
 ```
 Gli addons aggiuntivi li andremo a scaricare nella cartella personal_addons che per il momento creiamo
 ```sh
