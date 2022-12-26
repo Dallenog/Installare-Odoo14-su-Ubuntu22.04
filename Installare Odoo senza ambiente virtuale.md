@@ -1,4 +1,4 @@
-# Guida di instllazione Odoo 14 su Ubuntu 20.04
+# Guida di instllazione Odoo 14 su Ubuntu 22.04
 ### Contenuti:
 
 1. [Introduzione](#1-introduzione)
@@ -15,21 +15,18 @@
 
 ## 1. Introduzione
 
-Questa guida, ti aiuterà all'installazione di Odoo 14, scaricando Odoo dal repository Github e utilizzando Nginx come proxy inverso.
+Questa guida, ti aiuterà all'installazione di Odoo 14.
 
 Questa guida è stata testata utilizzando un server virtualizzato accedendo ad esso con ssh.
 
 ## 2. Preparazione del sistema
 
-Accedi a Ubuntu come utente sudo non root per poter completare correttamente questo tutorial.
-
 Aggiorna la cache Apt:
+
+$ ```sh sudo apt update && sudo apt upgrade -y ```
+
 ```sh
-sudo apt update
-```
-Installa gli strumenti necessari per l'installazione e la configurazione di Odoo
-```sh
-sudo apt install adduser fonts-inconsolata fonts-font-awesome fonts-roboto-unhinted libjs-underscore lsb-base postgresql-client postgresql python3-renderpm libpq-dev python3-dev nodejs  git build-essential node-less npm python3-pip python3-wheel python3-setuptools libjpeg-dev libpq-dev liblcms2-dev libwebp-dev libtiff5-dev libjpeg8-dev libopenjp2-7-dev libharfbuzz-dev libfribidi-dev libxcb1-dev libpq-dev libldap2-dev libsasl2-dev libxslt1-dev zlib1g-dev libxml2-dev
+sudo apt install python3-dev nodejs  git build-essential node-less npm python3-pip python3-venv python3-wheel python3-setuptools libjpeg-dev libpq-dev liblcms2-dev libwebp-dev libtiff5-dev libjpeg8-dev libopenjp2-7-dev libharfbuzz-dev libfribidi-dev libxcb1-dev libpq-dev libldap2-dev libsasl2-dev libxslt1-dev zlib1g-dev
 ```
 ## 3. Creare un utente di sistema
 
