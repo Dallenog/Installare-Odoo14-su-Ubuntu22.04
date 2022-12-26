@@ -8,7 +8,7 @@
 5. [Installare Wkhtmltopdf](##5-installare-wkhtmltopdf)
 6. [Installare e configurare Odoo 14](##6-Installare-e-configurare-odoo-14)
 7. [Aggiornare Odoo 14](##7-File-di-log-e-di-configurazione)
-8. [Creare un file di unità Systemd](##8-Creare-un-file-di-unità Systemd)
+8. [Creare un file di unità Systemd](##8-Creare-un-file-di-unità-Systemd)
 9. [Aggiornare Odoo 14](##9-Aggiornare-Odoo-14)
 10. [Test dell'installazione](##10-test-dell'installazione)
 
