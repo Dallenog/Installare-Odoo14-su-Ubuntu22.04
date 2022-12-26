@@ -1,17 +1,16 @@
 # Guida di instllazione Odoo 14 su Ubuntu 22.04
 ### Contenuti:
 
-1. [Introduzione](#1-introduzione)
-2. [Preparazione del sistema](#1-preparazione-del-sistema)
-3. [Creare un utente di sistema](#2-Creare-un-utente-di-sistema)
-4. [Configurare PostgreSQL](#4-configurare-postgresql)
-5. [Installare Wkhtmltopdf](#5-installare-wkhtmltopdf)
-6. [Installare e configurare Odoo 14](#6-Installare-e-configurare-odoo-14)
-7. [Aggiornare Odoo 14](#7-aggiornare-Odoo-14)
-8. [Addons necessari per la fiscalità italiana](#8-addons-necessari-per-la-fiscalità-italiana)
-9. [File di log e di configurazione](#9-file-di-log-e-di-configurazione)
-10. [Creare un file di unità Systemd](#10-creare-un-file-di-unità-systemd)
-11. [Test dell'installazione](#11-test-dell'installazione)
+1. [Introduzione](##1-introduzione)
+2. [Preparazione del sistema](##2-preparazione-del-sistema)
+3. [Creare un utente di sistema](#3-Creare-un-utente-di-sistema)
+4. [Configurare PostgreSQL](##4-configurare-postgresql)
+5. [Installare Wkhtmltopdf](##5-installare-wkhtmltopdf)
+6. [Installare e configurare Odoo 14](##6-Installare-e-configurare-odoo-14)
+7. [Aggiornare Odoo 14](##7-File-di-log-e-di-configurazione)
+8. [Creare un file di unità Systemd](##8-Creare-un-file-di-unità Systemd)
+9. [Aggiornare Odoo 14](##9-Aggiornare-Odoo-14)
+10. [Test dell'installazione](##10-test-dell'installazione)
 
 ## 1. Introduzione
 
@@ -21,100 +20,89 @@ Questa guida è stata testata utilizzando un server virtualizzato accedendo ad e
 
 ## 2. Preparazione del sistema
 
-Aggiorna la cache Apt:
+Aggiorniamo e instlliamo dipendenze (no root):
 
-$ ```sh sudo apt update && sudo apt upgrade -y ```
-
+```sh
+sudo apt update && sudo apt upgrade -y
+```
 ```sh
 sudo apt install python3-dev nodejs  git build-essential node-less npm python3-pip python3-venv python3-wheel python3-setuptools libjpeg-dev libpq-dev liblcms2-dev libwebp-dev libtiff5-dev libjpeg8-dev libopenjp2-7-dev libharfbuzz-dev libfribidi-dev libxcb1-dev libpq-dev libldap2-dev libsasl2-dev libxslt1-dev zlib1g-dev
 ```
+Installiamo e verifichiamo il database:
+```sh
+sudo apt install postgresql -y
+```
+```sh
+sudo psql --version
+```
+```sh
+sudo systemctl status postgresql
+```
 ## 3. Creare un utente di sistema
 
-Crea un utente di sistema che eseguirà Odoo, chiamato odoo14 con home directory /opt/odoo14:
+Creiamo un utente e impostiamo come sua cartella home /bin/bash
 ```sh
 sudo useradd -m -d /opt/odoo14 -U -r -s /bin/bash odoo14
 ```
-Puoi impostare il nome dell'utente che vuoi, purché successivamente crei un utente PostgreSQL con lo stesso nome.
-
 ## 4. Configurare PostgreSQL
 
-Odoo utilizza PostgreSQL come back-end del database, è già stato installato nel punto 2, quindi procediamo con la creazione di un utente PostgreSQL con lo stesso nome dell'utente di sistema precedentemente creato, nel nostro caso odoo14:
+Creiamo un utente PostgreSQL e lo chiamamo come l'utente di sistema.:
 ```sh
 sudo su - postgres -c "createuser -s odoo14"
 ```
 ## 5. Installare Wkhtmltopdf
 
-Wkhtmltox fornisce una serie di strumenti da riga di comando open source in grado di eseguire il rendering HTML in PDF e vari formati di immagine. Per poter stampare report PDF, è necessario installare lo strumento wkhtmltopdf. La versione consigliata per Odoo è 0.12.6, che non è disponibile nei repository Ubuntu 20.04 predefiniti.
-
 Scarica il pacchetto:
 ```sh
-sudo wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
+sudo wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
 ```
 Installa il pacchetto digitando:
 ```sh
-sudo apt install ./wkhtmltox_0.12.6-1.bionic_amd64.deb
+sudo apt install ./wkhtmltox_0.12.6.1-2.jammy_amd64.deb
 ```
 ## 6. Installare e configurare Odoo 14
 
-Installeremo Odoo dal sorgente.
-
 Passiamo all'utente odoo14:
 ```sh
 sudo su - odoo14
 ```
-Clona il codice sorgente di Odoo 14 da GitHub:
 ```sh
 git clone https://www.github.com/odoo/odoo --depth 1 --branch 14.0 /opt/odoo14/odoo
 ```
-Una volta completato il download installa tutti i moduli Python richiesti con pip3:
+Una volta completato il download passiamo all'utente odoo14:
+```sh
+cd /opt/odoo14
+```
+Creiamo virtual environment per Odoo 14:
+```sh
+python3 -m venv myodoo-venv
+```
+Attiviamo virtual environment.
+```sh
+source myodoo-venv/bin/activate
+```
+Installiamo le dipendenze di Odoo. I moduli Python necessari per l'esecuzione di Odoo 14 sono indicati nel file requirements.txt. Per installarli, eseguire i seguenti comandi:
+```sh
+(myodoo-venv) $ pip3 install wheel
+```
+```sh
+(myodoo-venv) $ pip3 install -r odoo/requirements.txt
+```
+Installiamo le dipendenze per la fiscalità italiana:
+```sh
+pip3 install unidecode codicefiscale asn1crypto pyxb==1.2.6 elementpath openupgradelib xmlschema python-barcode cryptography
+```
+Dopo aver installato le dipendenze, disattiviamo l'ambiente virtuale:
+```sh
+(myodoo-venv) $ deactivate
+```
+Addons aggiuntivi:
 
+Creiamo una cartella dove andremo a copiare gli addons:
 ```sh
-pip3 install wheel
+mkdir /opt/odoo14/addons/personal_addons
 ```
-```sh
-pip3 install -r odoo/requirements.txt
-```
-```sh
-pip3 install unidecode codicefiscale asn1crypto pyxb==1.2.6 elementpath openupgradelib xmlschema python-barcode
-```
-Usciamo dall'utente odoo14
-```sh
-exit
-```
-Se si riscontra un errore di compilazione, assicurarsi che tutte le dipendenze richieste elencate nel punto "2. Preparazione del sistema" siano installate.
-
-## 7. aggiornare Odoo 14
-
-Fermiamo il servizio e ci spostiamo nella cartella di installazione
-```sh
-sudo service odoo14 stop
-```
-```sh
-sudo su - odoo14
-```
-```sh
-cd /opt/odoo14/odoo
-```
-Verifichiamo la versinone installata
-```sh
-git branch -a
-```
-Aggiorniamo
-```sh
-git pull --all
-```
-Riavviamo il servizio
-```sh
-sudo service odoo start
-```
-
-## 8. Installare addons necessari
-
-Scarichiamo gli addons per la versione italiana.
-Passiamo all'utente odoo14:
-```sh
-sudo su - odoo14
-```
+Scarichiamo i moduli per la fiscalità italiana:
 ```sh
 git clone https://github.com/OCA/l10n-italy.git -b 14.0 /opt/odoo14/addons/l10n-italy
 ```
@@ -130,54 +118,27 @@ git clone https://github.com/OCA/server-ux.git -b 14.0 /opt/odoo14/addons/server
 ```sh
 git clone https://github.com/OCA/partner-contact.git -b 14.0 /opt/odoo14/addons/partner-contact
 ```
-Scarichiamo gli addons per utilizzare il lettore dei codici a barre.
+Scarichiamo i moduli per il lettore dei codici a barre.
 ```sh
 git clone https://github.com/OCA/stock-logistics-barcode.git -b 14.0 /opt/odoo14/addons/stock-logistics-barcode
 git clone https://github.com/OCA/web.git -b 14.0 /opt/odoo14/addons/web
 ```
-Aggiornare la fiscalità italiana
-Fermiamo il servizio
-```sh
-sudo service odoo14 stop
-```
-Passiamo all'utente odoo14:
-```sh
-sudo su - odoo14
-```
-Aggiorniamo
-```sh
-cd /opt/odoo14/addons/l10n-italy && git pull --all && cd /opt/odoo14/addons/account-financial-tools && git pull --all && cd /opt/odoo14/addons/account-financial-reporting && git pull --all && cd /opt/odoo14/addons/server-ux && git pull --all && cd /opt/odoo14/addons/partner-contact && git pull --all && cd
-```
-Riavviamo il servizio
-```sh
-sudo service odoo start
-```
-Gli addons aggiuntivi li andremo a scaricare nella cartella personal_addons che per il momento creiamo
-```sh
-mkdir /opt/odoo14/addons/personal_addons
-```
-Per caricare sul server i file scaricati usiamo il seguente comando
-```sh
-scp -r /home/nome_utente/nome_della_cartella odoo14@192....:/opt/odoo14/addons/personal_addons
-```
-Torna al tuo utente sudo:
+Usciamo dall'utente odoo14
 ```sh
 exit
 ```
+## 7. File di log e di configurazione
 
-## 9. File di log e di configurazione
-
-Creiamo un file di log
+Creiamo un file di log (utente root)
 ```sh
-sudo touch /var/log/odoo14.log
+mkdir /var/log/odoo14
 ```
-Leggiamo il file di log
 ```sh
-less /var/log/odoo14.log
+chown odoo14:root /var/log/odoo14
 ```
-Impostiamo i permessi per l'utente
+Leggiamo il file di log (per uscire alt-q):
 ```sh
-sudo chown -R odoo14:odoo14 /opt/odoo14/ /var/log/odoo14.log
+less /var/log/odoo14/odoo.log
 ```
 Creiamo un file di configurazione con il seguente contenuto:
 ```sh
@@ -191,6 +152,7 @@ db_host = False
 db_port = False
 db_user = odoo14
 db_password = False
+xmlrpc_port = 8069
 addons_path = /opt/odoo14/odoo/addons
                ,/opt/odoo14/addons/personal_addons
                ,/opt/odoo14/addons/l10n-italy
@@ -200,13 +162,13 @@ addons_path = /opt/odoo14/odoo/addons
                ,/opt/odoo14/addons/partner-contact
                ,/opt/odoo14/addons/stock-logistics-barcode
                ,/opt/odoo14/addons/web
-logfile = /var/log/odoo14.log
+logfile = /var/log/odoo14/odoo.log
 ```
 Non dimenticare di cambiare my_admin_passwd in qualcosa di più sicuro.
 
-## 10. Creare un file di unità Systemd
+## 8. Creare un file di unità Systemd
 
-Apri l'editor di testo e crea un file di unità di servizio chiamato odoo14.service con il seguente contenuto:
+Per gestire il nostro Odoo 14 dobbiamo creare un file systemd:
 ```sh
 sudo nano /etc/systemd/system/odoo14.service
 ```
@@ -222,17 +184,16 @@ SyslogIdentifier=odoo14
 PermissionsStartOnly=true
 User=odoo14
 Group=odoo14
-ExecStart= /opt/odoo14/odoo/odoo-bin -c /etc/odoo14.conf
+ExecStart=/opt/odoo14/myodoo-venv/bin/python3 /opt/odoo14/odoo/odoo-bin -c /etc/odoo14.conf
 StandardOutput=journal+console
 
 [Install]
 WantedBy=multi-user.target
 ```
-Notifichiamo a systemd che esiste un nuovo file di unità:
+Notifichiamo a systemd che esiste un nuovo file di unità, avviamo il servizio e lo abilitiamo per l'avvio:
 ```sh
 sudo systemctl daemon-reload
 ```
-Avviamo il servizio Odoo e abilitalo per l'avvio all'avvio eseguendo:
 ```sh
 sudo systemctl enable --now odoo14
 ```
@@ -255,20 +216,91 @@ Per visualizzare i messaggi registrati dal servizio Odoo, utilizzare il comando 
 ```sh
 sudo journalctl -u odoo14
 ```
-## 11. Test dell'installazione
+Se tutto è andato bene puoi cominciare a utilizzare Odoo 14  a questo indirizzo http://TUO_DOMINIO_O_IP:8069.
 
-Se non sai l'indirizzo ip del tuo server digita:
+## 9. Aggiornare Odoo 14
+
+Prima di incominciare facciamo una copia di sicurezza del server.
+Fermiamo il servizio e ci spostiamo nella cartella di installazione
 ```sh
-ifconfig
+sudo service odoo14 stop
 ```
-L'output dovrebbe essere simile al seguente.
+```sh
+sudo su - odoo14
+```
+```sh
+cd ./odoo
+```
+Verifichiamo la versinone installata
+```sh
+git branch -a
+```
+Aggiorniamo
+```sh
+git pull --all
+```
+Riavviamo il servizio
+```sh
+sudo service odoo start
+```
+Usciamo dall'utente odoo14
+```sh
+exit
+```
+Aggiornare moduli fiscalità italiana:
+```sh
+sudo service odoo14 stop
+```
+Passiamo all'utente odoo14:
+```sh
+sudo su - odoo14
+```
+Aggiorniamo
+```sh
+cd /opt/odoo14/addons/l10n-italy && git pull --all && cd /opt/odoo14/addons/account-financial-tools && git pull --all && cd /opt/odoo14/addons/account-financial-reporting && git pull --all && cd /opt/odoo14/addons/server-ux && git pull --all && cd /opt/odoo14/addons/partner-contact && git pull --all && cd
+```
+Riavviamo il servizio
+```sh
+sudo service odoo start
+```
+Usciamo dall'utente odoo14
+```sh
+exit
+```
+Aggiornare moduli codici a barre:
+```sh
+sudo service odoo14 stop
+```
+Passiamo all'utente odoo14:
+```sh
+sudo su - odoo14
+```
+Aggiorniamo
+```sh
+cd /opt/odoo14/addons/web && git pull --all && cd /opt/odoo14/addons/stock-logistics-barcode && git pull --all
+```
+Riavviamo il servizio
+```sh
+sudo service odoo start
+```
+Usciamo dall'utente odoo14
+```sh
+exit
+```
+## 10. Test dell'installazione
 
-enp1s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 192.168.152.16  netmask 255.255.255.0  broadcast 192.168.162.255
-        ...
-
-Il tuo ip è il numero che segue inet
-
-Apri il tuo browser e digita: http://TUO_DOMINIO_O_IP:8069 dovresti visualizzare la pagina di configurazione di Odoo 14.
-
-Continuerà...
+Verifichiamo lo stato del servizio di odoo 14 e del database:
+```sh
+sudo systemctl status odoo14
+```
+```sh
+sudo systemctl status postgresql
+```
+Leggere il file di log (per uscire alt-q):
+```sh
+less /var/log/odoo14/odoo.log
+```
+Per visualizzare i messaggi registrati dal servizio Odoo, utilizzare il comando seguente:
+```sh
+sudo journalctl -u odoo14
+```
