@@ -121,6 +121,8 @@ git clone https://github.com/OCA/partner-contact.git -b 14.0 /opt/odoo14/addons/
 Scarichiamo i moduli per il lettore dei codici a barre.
 ```sh
 git clone https://github.com/OCA/stock-logistics-barcode.git -b 14.0 /opt/odoo14/addons/stock-logistics-barcode
+```
+```sh
 git clone https://github.com/OCA/web.git -b 14.0 /opt/odoo14/addons/web
 ```
 Usciamo dall'utente odoo14
