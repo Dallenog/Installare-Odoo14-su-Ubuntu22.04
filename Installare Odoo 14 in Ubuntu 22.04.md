@@ -20,13 +20,16 @@ Questa guida è stata testata utilizzando un server virtualizzato accedendo ad e
 
 ## 2. Preparazione del sistema
 
-Aggiorniamo e instlliamo dipendenze (no root):
-
+Aggiungiamp ppa per python 3.8  (utente no root)
+```sh
+sudo echo 'deb [signed-by=/usr/share/keyrings/deadsnakes.gpg] https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy main' | sudo tee -a /etc/apt/sources.list.d/python.list
+```
+Aggiorniamo e instlliamo dipendenze:
 ```sh
 sudo apt update && sudo apt upgrade -y
 ```
 ```sh
-sudo apt install python3-dev nodejs  git build-essential node-less npm python3-pip python3-venv python3-wheel python3-setuptools libjpeg-dev libpq-dev liblcms2-dev libwebp-dev libtiff5-dev libjpeg8-dev libopenjp2-7-dev libharfbuzz-dev libfribidi-dev libxcb1-dev libpq-dev libldap2-dev libsasl2-dev libxslt1-dev zlib1g-dev
+sudo apt install python3.8-dev nodejs  git build-essential node-less npm python3-pip python3.8-venv python3-wheel python3-setuptools libjpeg-dev libpq-dev liblcms2-dev libwebp-dev libtiff5-dev libjpeg8-dev libopenjp2-7-dev libharfbuzz-dev libfribidi-dev libxcb1-dev libpq-dev libldap2-dev libsasl2-dev libxslt1-dev zlib1g-dev
 ```
 Installiamo e verifichiamo il database:
 ```sh
@@ -75,7 +78,7 @@ cd /opt/odoo14
 ```
 Creiamo virtual environment per Odoo 14:
 ```sh
-python3 -m venv myodoo-venv
+python3.8 -m venv myodoo-venv
 ```
 Attiviamo virtual environment.
 ```sh
@@ -83,7 +86,7 @@ source myodoo-venv/bin/activate
 ```
 Installiamo le dipendenze di Odoo. I moduli Python necessari per l'esecuzione di Odoo 14 sono indicati nel file requirements.txt. Per installarli, eseguire i seguenti comandi:
 ```sh
-(myodoo-venv) $ pip3 install wheel
+(myodoo-venv) $ pip3 install wheel psycopg2-binary
 ```
 ```sh
 (myodoo-venv) $ pip3 install -r odoo/requirements.txt
