@@ -86,7 +86,7 @@ source myodoo-venv/bin/activate
 ```
 Installiamo le dipendenze di Odoo. I moduli Python necessari per l'esecuzione di Odoo 14 sono indicati nel file requirements.txt. Per installarli, eseguire i seguenti comandi:
 ```sh
-(myodoo-venv) $ pip3 install wheel psycopg2-binary
+(myodoo-venv) $ pip3 install wheel
 ```
 ```sh
 (myodoo-venv) $ pip3 install -r odoo/requirements.txt
