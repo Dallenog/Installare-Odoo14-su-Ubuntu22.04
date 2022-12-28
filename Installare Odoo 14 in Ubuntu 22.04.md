@@ -20,7 +20,10 @@ Questa guida è stata testata utilizzando un server virtualizzato accedendo ad e
 
 ## 2. Preparazione del sistema
 
-Aggiungiamp ppa per python 3.8  (utente no root)
+Aggiungiamp ppa per python 3.8  (utente no root):
+```sh
+sudo gpg --no-default-keyring --keyring /usr/share/keyrings/deadsnakes.gpg --keyserver keyserver.ubuntu.com --recv-keys F23C5A6CF475977595C89F51BA6932366A755776
+```
 ```sh
 sudo echo 'deb [signed-by=/usr/share/keyrings/deadsnakes.gpg] https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy main' | sudo tee -a /etc/apt/sources.list.d/python.list
 ```
