@@ -32,7 +32,7 @@ Aggiorniamo e instlliamo dipendenze:
 sudo apt update && sudo apt upgrade -y
 ```
 ```sh
-sudo apt install python3.8-dev nodejs  git build-essential node-less npm python3-pip python3.8-venv python3-wheel python3-setuptools libjpeg-dev libpq-dev liblcms2-dev libwebp-dev libtiff5-dev libjpeg8-dev libopenjp2-7-dev libharfbuzz-dev libfribidi-dev libxcb1-dev libpq-dev libldap2-dev libsasl2-dev libxslt1-dev zlib1g-dev
+sudo apt install python3.8-dev nodejs git build-essential node-less npm python3-pip python3.8-venv python3-wheel python3-setuptools libjpeg-dev liblcms2-dev libwebp-dev libtiff5-dev libjpeg8-dev libopenjp2-7-dev libharfbuzz-dev libfribidi-dev libxcb1-dev libpq-dev libldap2-dev libsasl2-dev libxslt1-dev zlib1g-dev
 ```
 Installiamo e verifichiamo il database:
 ```sh
