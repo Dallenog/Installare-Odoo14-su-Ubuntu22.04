@@ -75,7 +75,7 @@ sudo su - odoo14
 ```sh
 git clone https://www.github.com/odoo/odoo --depth 1 --branch 14.0 /opt/odoo14/odoo
 ```
-Una volta completato il download passiamo all'utente odoo14:
+Una volta completato il download ci spostiamo in /odoo14:
 ```sh
 cd /opt/odoo14
 ```
