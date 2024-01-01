@@ -7,7 +7,7 @@
 4. [Configurare PostgreSQL](##4-configurare-postgresql)
 5. [Installare Wkhtmltopdf](##5-installare-wkhtmltopdf)
 6. [Installare e configurare Odoo 14](##6-Installare-e-configurare-odoo-14)
-7. [Aggiornare Odoo 14](##7-File-di-log-e-di-configurazione)
+7. [File di log e di configurazione](##7-File-di-log-e-di-configurazione)
 8. [Creare un file di unità Systemd](##8-Creare-un-file-di-unità-Systemd)
 9. [Aggiornare Odoo 14](##9-Aggiornare-Odoo-14)
 10. [Test dell'installazione](##10-test-dell'installazione)
@@ -241,8 +241,12 @@ Se tutto è andato bene puoi cominciare a utilizzare Odoo 14  a questo indirizzo
 
 ## 9. Aggiornare Odoo 14
 
-Prima di incominciare facciamo una copia di sicurezza del server.
-Sacrichiamo i moduli, poi prima di aggiornare odoo andare sul portale e aggiornare i moduli.
+Prima di incominciare:
+  facciamo una copia di sicurezza del server;
+  entriamo in odoo14 dal browser e apriamo almeno due schede
+  scarichiamo i moduli ( qui di seguito)
+  aggiorniamo i moduli dal browser.
+Solo dopo aver fatto tutta questa sequenza andremo ad aggiornare odoo14
 
 Aggiornare moduli:
 ```sh
@@ -287,7 +291,7 @@ git pull --all
 ```
 Attiviamo virtual environment.
 ```sh
-source myodoo-venv/bin/activate
+cd && source myodoo-venv/bin/activate
 ```
 Aggiorniamo weel
 ```sh
@@ -296,6 +300,10 @@ pip3 install --upgrade wheel
 Aggiorniamo le dipendenze
 ```sh
 pip3 install --upgrade -r odoo/requirements.txt
+```
+Usciamo da venv
+```sh
+deactivate
 ```
 Usciamo dall'utente odoo14
 ```sh
