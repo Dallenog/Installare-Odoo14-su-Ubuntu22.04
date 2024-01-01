@@ -242,6 +242,31 @@ Se tutto è andato bene puoi cominciare a utilizzare Odoo 14  a questo indirizzo
 ## 9. Aggiornare Odoo 14
 
 Prima di incominciare facciamo una copia di sicurezza del server.
+Sacrichiamo i moduli, poi prima di aggiornare odoo andare sul portale e aggiornare i moduli.
+
+Aggiornare moduli:
+```sh
+sudo service odoo14 stop
+```
+Passiamo all'utente odoo14:
+```sh
+sudo su - odoo14
+```
+Aggiorniamo
+```sh
+cd /opt/odoo14/addons/l10n-italy && git pull --all && cd /opt/odoo14/addons/account-financial-tools && git pull --all && cd /opt/odoo14/addons/account-financial-reporting && git pull --all && cd /opt/odoo14/addons/server-ux && git pull --all && cd /opt/odoo14/addons/partner-contact && git pull --all && cd /opt/odoo14/addons/web && git pull --all && cd /opt/odoo14/addons/stock-logistics-barcode && git pull --all && cd /opt/odoo14/addons/account-payment && git pull --all && cd /opt/odoo14/addons/purchase-workflow && git pull --all && cd /opt/odoo14/addons/account-invoicing && git pull --all && cd
+```
+Usciamo dall'utente odoo14
+```sh
+exit
+```
+Riavviamo il servizio
+```sh
+sudo service odoo14 start
+```
+Andiamo sul prtale e aggiorniamo i moduli.
+
+Aggiorniamo Odoo14:
 Fermiamo il servizio e ci spostiamo nella cartella di installazione
 ```sh
 sudo service odoo14 stop
@@ -280,27 +305,6 @@ Riavviamo il servizio
 ```sh
 sudo service odoo14 start
 ```
-Aggiornare moduli:
-```sh
-sudo service odoo14 stop
-```
-Passiamo all'utente odoo14:
-```sh
-sudo su - odoo14
-```
-Aggiorniamo
-```sh
-cd /opt/odoo14/addons/l10n-italy && git pull --all && cd /opt/odoo14/addons/account-financial-tools && git pull --all && cd /opt/odoo14/addons/account-financial-reporting && git pull --all && cd /opt/odoo14/addons/server-ux && git pull --all && cd /opt/odoo14/addons/partner-contact && git pull --all && cd /opt/odoo14/addons/web && git pull --all && cd /opt/odoo14/addons/stock-logistics-barcode && git pull --all && cd /opt/odoo14/addons/account-payment && git pull --all && cd /opt/odoo14/addons/purchase-workflow && git pull --all && cd /opt/odoo14/addons/account-invoicing && git pull --all && cd
-```
-Usciamo dall'utente odoo14
-```sh
-exit
-```
-Riavviamo il servizio
-```sh
-sudo service odoo14 start
-```
-
 ## 10. Test dell'installazione
 
 Verifichiamo lo stato del servizio di odoo 14 e del database:
