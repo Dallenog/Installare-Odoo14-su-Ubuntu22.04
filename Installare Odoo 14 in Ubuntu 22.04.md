@@ -1,16 +1,16 @@
 # Guida di instllazione Odoo 14 su Ubuntu 22.04
 ### Contenuti:
 
-1. [Introduzione](##1-introduzione)
-2. [Preparazione del sistema](##2-preparazione-del-sistema)
-3. [Creare un utente di sistema](#3-Creare-un-utente-di-sistema)
-4. [Configurare PostgreSQL](##4-configurare-postgresql)
-5. [Installare Wkhtmltopdf](##5-installare-wkhtmltopdf)
-6. [Installare e configurare Odoo 14](##6-Installare-e-configurare-odoo-14)
-7. [File di log e di configurazione](##7-File-di-log-e-di-configurazione)
-8. [Creare un file di unità Systemd](##8-Creare-un-file-di-unità-Systemd)
-9. [Aggiornare Odoo 14](##9-Aggiornare-Odoo-14)
-10. [Test dell'installazione](##10-test-dell'installazione)
+1. [Introduzione]
+2. [Preparazione del sistema]
+3. [Creare un utente di sistema]
+4. [Configurare PostgreSQL]
+5. [Installare Wkhtmltopdf]
+6. [Installare e configurare Odoo 14]
+7. [File di log e di configurazione]
+8. [Creare un file di unità Systemd]
+9. [Aggiornare Odoo 14]
+10. [Test dell'installazione]
 
 ## 1. Introduzione
 
