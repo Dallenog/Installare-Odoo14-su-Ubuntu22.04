@@ -297,7 +297,7 @@ sudo su - odoo14
 ```
 Aggiorniamo
 ```sh
-cd /opt/odoo14/addons/web && git pull --all && cd /opt/odoo14/addons/stock-logistics-barcode && git pull --all
+cd /opt/odoo14/addons/web && git pull --all && cd /opt/odoo14/addons/stock-logistics-barcode && git pull --all && cd
 ```
 Usciamo dall'utente odoo14
 ```sh
