@@ -20,7 +20,7 @@ Questa guida è stata testata utilizzando un server virtualizzato accedendo ad e
 
 ## 2. Preparazione del sistema
 
-Aggiungiamp ppa per python 3.8  (utente no root):
+Aggiungiamo ppa per python 3.8  (utente no root):
 ```sh
 sudo gpg --no-default-keyring --keyring /usr/share/keyrings/deadsnakes.gpg --keyserver keyserver.ubuntu.com --recv-keys F23C5A6CF475977595C89F51BA6932366A755776
 ```
@@ -247,13 +247,25 @@ Aggiorniamo
 ```sh
 git pull --all
 ```
-Riavviamo il servizio
+Attiviamo virtual environment.
 ```sh
-sudo service odoo start
+source myodoo-venv/bin/activate
+```
+Aggiorniamo weel
+```sh
+pip3 install --upgrade wheel
+```
+Aggiorniamo le dipendenze
+```sh
+pip3 install --upgrade -r odoo/requirements.txt
 ```
 Usciamo dall'utente odoo14
 ```sh
 exit
+```
+Riavviamo il servizio
+```sh
+sudo service odoo14 start
 ```
 Aggiornare moduli fiscalità italiana:
 ```sh
@@ -267,13 +279,13 @@ Aggiorniamo
 ```sh
 cd /opt/odoo14/addons/l10n-italy && git pull --all && cd /opt/odoo14/addons/account-financial-tools && git pull --all && cd /opt/odoo14/addons/account-financial-reporting && git pull --all && cd /opt/odoo14/addons/server-ux && git pull --all && cd /opt/odoo14/addons/partner-contact && git pull --all && cd
 ```
-Riavviamo il servizio
-```sh
-sudo service odoo start
-```
 Usciamo dall'utente odoo14
 ```sh
 exit
+```
+Riavviamo il servizio
+```sh
+sudo service odoo14 start
 ```
 Aggiornare moduli codici a barre:
 ```sh
@@ -287,14 +299,15 @@ Aggiorniamo
 ```sh
 cd /opt/odoo14/addons/web && git pull --all && cd /opt/odoo14/addons/stock-logistics-barcode && git pull --all
 ```
-Riavviamo il servizio
-```sh
-sudo service odoo start
-```
 Usciamo dall'utente odoo14
 ```sh
 exit
 ```
+Riavviamo il servizio
+```sh
+sudo service odoo14 start
+```
+
 ## 10. Test dell'installazione
 
 Verifichiamo lo stato del servizio di odoo 14 e del database:
