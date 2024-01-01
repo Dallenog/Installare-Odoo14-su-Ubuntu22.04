@@ -131,6 +131,16 @@ git clone https://github.com/OCA/stock-logistics-barcode.git -b 14.0 /opt/odoo14
 ```sh
 git clone https://github.com/OCA/web.git -b 14.0 /opt/odoo14/addons/web
 ```
+Scarichiamo ulteriorii moduli
+```sh
+git clone https://github.com/OCA/account-payment.git -b 14.0 /opt/odoo14/addons/account-payment
+```
+```sh
+git clone https://github.com/OCA/purchase-workflow.git -b 14.0 /opt/odoo14/addons/purchase-workflow
+```
+```sh
+git clone https://github.com/OCA/account-invoicing.git -b 14.0 /opt/odoo14/addons/account-invoicing
+```
 Usciamo dall'utente odoo14
 ```sh
 exit
@@ -170,6 +180,9 @@ addons_path = /opt/odoo14/odoo/addons
                ,/opt/odoo14/addons/partner-contact
                ,/opt/odoo14/addons/stock-logistics-barcode
                ,/opt/odoo14/addons/web
+               ,/opt/odoo14/addons/account-payment
+               ,/opt/odoo14/addons/purchase-workflow
+               ,/opt/odoo14/addons/account-invoicing
 logfile = /var/log/odoo14/odoo.log
 ```
 Non dimenticare di cambiare my_admin_passwd in qualcosa di più sicuro.
@@ -267,7 +280,7 @@ Riavviamo il servizio
 ```sh
 sudo service odoo14 start
 ```
-Aggiornare moduli fiscalità italiana:
+Aggiornare moduli:
 ```sh
 sudo service odoo14 stop
 ```
@@ -277,27 +290,7 @@ sudo su - odoo14
 ```
 Aggiorniamo
 ```sh
-cd /opt/odoo14/addons/l10n-italy && git pull --all && cd /opt/odoo14/addons/account-financial-tools && git pull --all && cd /opt/odoo14/addons/account-financial-reporting && git pull --all && cd /opt/odoo14/addons/server-ux && git pull --all && cd /opt/odoo14/addons/partner-contact && git pull --all && cd
-```
-Usciamo dall'utente odoo14
-```sh
-exit
-```
-Riavviamo il servizio
-```sh
-sudo service odoo14 start
-```
-Aggiornare moduli codici a barre:
-```sh
-sudo service odoo14 stop
-```
-Passiamo all'utente odoo14:
-```sh
-sudo su - odoo14
-```
-Aggiorniamo
-```sh
-cd /opt/odoo14/addons/web && git pull --all && cd /opt/odoo14/addons/stock-logistics-barcode && git pull --all && cd
+cd /opt/odoo14/addons/l10n-italy && git pull --all && cd /opt/odoo14/addons/account-financial-tools && git pull --all && cd /opt/odoo14/addons/account-financial-reporting && git pull --all && cd /opt/odoo14/addons/server-ux && git pull --all && cd /opt/odoo14/addons/partner-contact && git pull --all && cd /opt/odoo14/addons/web && git pull --all && cd /opt/odoo14/addons/stock-logistics-barcode && git pull --all && cd /opt/odoo14/addons/account-payment && git pull --all && cd /opt/odoo14/addons/purchase-workflow && git pull --all && cd /opt/odoo14/addons/account-invoicing && git pull --all && cd
 ```
 Usciamo dall'utente odoo14
 ```sh
